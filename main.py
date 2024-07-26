@@ -6,6 +6,7 @@ from ebooklib import epub
 from progress.bar import Bar
 from PIL import Image
 from simple_term_menu import TerminalMenu
+import sys
 
 base_url = "https://novelhi.com/"
 
@@ -19,6 +20,8 @@ headers = lambda url : {'User-Agent': 'Mozilla/5.0',
     '__cf_bm': f'{requests.Session().get(url).cookies.get_dict().get('__cf_bm')}'}
 
 resultCount = 0
+
+download_dir = sys.argv[1]
 
 class Book:
     def __init__(self,name,author,desc,imgURL,rating,chapter_count,genres,status):
@@ -150,10 +153,23 @@ while not library_menu_exit:
                     os.remove("cover.png")
                     epubBook.add_item(epub.EpubNcx())
                     epubBook.add_item(epub.EpubNav())
-                    epub.write_epub(f"{book.name}.epub", epubBook, {})
-                print()
-                print("Downloaded! Enjoy your read!")
-                os.rename(f"./{book.name}.epub",f"~/Documents/PyNovel/{book.name}.epub")
+                    epub.write_epub(f"{book.name}.epub", epubBook,{})
+                    print()
+                    print("Downloaded! Enjoy your read!")
+                    try:
+                        source_path = f"{os.getcwd()}/{book.name}.epub"
+                        dest_path = str(download_dir) + f"/{book.name}.epub"
+                        print(dest_path)
+                        if os.path.exists(source_path):
+                            os.rename(source_path, dest_path)
+                            print(f"Successfully downloaded {book.name}.epub in {download_dir}")
+                        else:
+                            print(f"Error: File {source_path} not found.")
+                    except OSError as e:
+                        print(f"Error renaming file: {e}")
+                else:
+                    print()
+                    print("The Novel Didn't Contain Any Chapters :(")
                 download_menu_exit=True
                 library_menu_exit = True
             else:
