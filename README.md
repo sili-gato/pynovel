@@ -13,16 +13,21 @@ export PATH="path/to/cloned/repo:$PATH"
 ### For Example, if you cloned to "~/Documents", the command would be
 export PATH="Users/yourName/Documents:$PATH" # For macOS
 ```
-3. Create your config file by running "pynovel -e"
+3. (OPTIONAL) Setup an alias for pynovel by adding the following line to your .zshrc (or other relevant shell config files)
+```sh
+alias pynovel="pynovel.sh" 
+```
+#### Assuming you have aliased pynovel.sh as pynovel
+4. Create your config file by running "pynovel -e"
 ```sh
 pynovel -e
 ```
-4. Default PyNovel Configuration
+5. Default PyNovel Configuration
 ```sh
 pynovel_editor=nano #SETS THE TEXT EDITOR FOR WHEN YOU RUN "pynovel -e"
 download_dir="$PWD" #SETS THE DIRECTORY FOR THE NOVELS DOWNLOADED
 ```
-5. My config
+6. My config
 ```
 pynovel_editor=nvim
 download_dir="$HOME/Documents/Novels" ### "$HOME" is your root directory path. For example its the "~" on macOS.
