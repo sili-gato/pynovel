@@ -1,0 +1,6 @@
+requests
+bs4
+ebooklib
+progress
+pillow
+simple_term_menu
