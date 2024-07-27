@@ -30,7 +30,8 @@ download_dir="$PWD" #SETS THE DIRECTORY FOR THE NOVELS DOWNLOADED
 6. My config
 ```
 pynovel_editor=nvim
-download_dir="$HOME/Documents/Novels" ### "$HOME" is your root directory path. For example its the "~" on macOS.
+download_dir="$HOME/Documents/Novels" ### "$HOME" is your root directory path.
+For example its the "~" on macOS.
 ```
 
 ### Work In Progress
