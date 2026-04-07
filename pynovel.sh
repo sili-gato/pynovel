@@ -22,4 +22,4 @@ configuration() {
 
 configuration
 
-python $(dirname "$0")/main.py $download_dir
+python "$(dirname "$0")/main.py" --output-dir "$download_dir"
